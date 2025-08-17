@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playverse - Game Universe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/games.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+<!-- Offcanvas slidebar -->
+ <div class="offcanvas offcanvas-end text-bg-dark" id="demoo">
+  <div class="offcanvas-header">
+    <h1 class="offcanvas-title"><strong>Explore</strong></h1>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div id="slidebarbody" class="offcanvas-body">
+
+    <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#space" style="display: block;">
+       tournaments
+    </button>
+
+    <a href="shop.html#ingame-items" >In Game Items</a>
+    <a href="shop.html">Shop</a>
+    <a href="games.html#upcoming-tournaments" >E-sport</a>
+    <a href="signin.html" >Sign In</a>
+    </div>
+  </div>
+</div>
+<!-- Navigation -->
+    <nav>
+        <div class="logo">PLAYVERSE</div>
+        <div class="nav-links">
+            <a href="index.html" >Home</a>
+            <a href="games.html" class="active">Games</a>
+            <a href="shop.html">Shop</a>
+            <a href="contact.html">Contact</a>
+            <a href="signin.html">Sign In</a>
+            <a href="#" class="btn-nav"><button class="btn align-items-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#demoo">
+            Explore
+        </button></a>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div> <!-- Hamburger -->
+    </nav>
+    </nav>
+
+<!-- Main Content Section -->
+    <main class="py-16 md:py-24 px-6 bg-[#15212c]">
+     <section id="add-to-cart-games" class="mb-24 relative fade-in-on-scroll">
+        
+    <!-- Navigation Buttons -->
+    <!-- The buttons are now positioned relative to the viewport on all screen sizes to keep them visible. -->
+    <button id="prev-game-btn" class="carousel-btn fixed top-1/2 left-2 transform -translate-y-1/2 p-3 rounded-full z-20">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+    </button>
+    <button id="next-game-btn" class="carousel-btn fixed top-1/2 right-2 transform -translate-y-1/2 p-3 rounded-full z-20">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+    </button>
+        
+    <div id="game-container" class="game-card-fade max-w-7xl mx-auto">
+        <!-- Game Title and Rating -->
+        <div class="flex items-center justify-between">
+            <div class="flex-1">
+                <h2 id="game-title" class="text-5xl md:text-6xl font-extrabold text-white mb-2"></h2>
+                <p id="game-developer" class="text-gray-400 text-lg md:text-xl font-medium"></p>
+            </div>
+        </div>
+
+        <!-- Main Game Details and Video/Image -->
+        <div class="flex flex-col md:flex-row gap-8 mt-10">
+            <!-- Left Side: Pricing and Details -->
+            <div class="md:w-1/2 space-y-8">
+                <!-- Rating and Reviews -->
+                <div class="flex items-center space-x-2 text-yellow-400">
+                    <span id="game-rating" class="text-2xl font-bold"></span>
+                    <div class="flex" id="rating-stars">
+                        <!-- Stars will be added dynamically by JS -->
+                    </div>
+                    <span id="game-ratings-count" class="text-gray-400"></span>
+                </div>
+
+                <!-- Price -->
+                <div class="flex items-baseline space-x-2">
+                    <span id="game-price" class="text-4xl font-extrabold text-white"></span>
+                    <span id="game-original-price" class="text-lg text-gray-500 line-through"></span>
+                    <span id="game-discount" class="text-sm text-green-400"></span>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 items-stretch sm:items-center">
+                    <!-- THE `<a>` TAG NOW HAS AN ID TO BE TARGETED BY JS -->
+                    <a id="buy-now-btn" href="payment.html" class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 shadow-lg text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 text-center">
+                        Buy Now
+                    </a>
+                    <button class="icon-btn p-4 rounded-xl hover:bg-gray-700 transition-colors duration-200">
+                        <!-- Heart Icon SVG -->
+                        <svg class="h-6 w-6 text-gray-400 hover:text-white transition-colors duration-200" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+
+
+                <!-- Game Feature List -->
+                <div class="space-y-4 text-gray-300 pt-8 border-t border-gray-700">
+                    <div id="feature-1" class="flex items-center space-x-3">
+                        <!-- Icon SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.142A12.004 12.004 0 0112 21a12.004 12.004 0 01-8.618-19.142A12.02 12.02 0 0112 2a12.02 12.02 0 018.618 17.858z" />
+                        </svg>
+                        <span id="feature-1-text"></span>
+                    </div>
+                    <div id="feature-2" class="flex items-center space-x-3">
+                        <!-- Icon SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1-2-2-1 2-1 1-2 1-2 1 2 2-1-2-1 1-2 1 2 2 1-2 1-1 2-2 1z" />
+                        </svg>
+                        <span id="feature-2-text"></span>
+                    </div>
+                    <div id="feature-3" class="flex items-center space-x-3">
+                        <!-- Icon SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-1.657 1.343-3 3-3s3 1.343 3 3-1.343 3-3 3-3-1.343-3-3zM12 11V3m0 8h8m-8 0H4m8 0v8m-4-4h8m-4 4h4m0-4v-4m-4-4v4m-4 4h4m0-4H4m8 0v4m-4-4h4m0 0v-4" />
+                        </svg>
+                        <span id="feature-3-text"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Large Game Video/Image -->
+            <div class="md:w-1/2 flex justify-center items-center relative">
+                <!-- Video or Image will be dynamically loaded here -->
+                <video id="game-video" autoplay loop muted playsinline class="rounded-3xl w-full h-auto shadow-2xl absolute inset-0 hidden">
+                    <source src="" type="video/mp4">
+                </video>
+                <img id="game-image" src="" alt="Game Image" class="rounded-3xl w-full h-auto shadow-2xl absolute inset-0">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        <!-- Free Games Section -->
+        <section class="fade-in-on-scroll max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-10">
+                Free Games
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Free Game Card 1 -->
+                <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-cyan-500/50 transition-all duration-300 hover:neon-glow">
+                    <img src="https://placehold.co/800x450/1e293b/a1a1aa?text=Free+Game+1" alt="Free Game 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2">Block Breaker</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            A classic arcade game with a modern twist. Break all the blocks!
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-500">Free</span>
+                            <button class="bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-bold py-2 px-4 rounded-md transition-transform transform hover:scale-105">
+                                Play Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Free Game Card 2 -->
+                <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-fuchsia-500/50 transition-all duration-300 hover:neon-glow">
+                    <img src="https://placehold.co/800x450/1e293b/a1a1aa?text=Free+Game+2" alt="Free Game 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2">Jungle Runner</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Run and jump through a dangerous jungle in this endless runner.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-500">Free</span>
+                            <button class="bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-bold py-2 px-4 rounded-md transition-transform transform hover:scale-105">
+                                Play Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Free Game Card 3 -->
+                <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-cyan-500/50 transition-all duration-300 hover:neon-glow">
+                    <img src="https://placehold.co/800x450/1e293b/a1a1aa?text=Free+Game+3" alt="Free Game 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2">Space Survivor</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Survive as long as you can in the cold, unforgiving vacuum of space.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-500">Free</span>
+                            <button class="bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-bold py-2 px-4 rounded-md transition-transform transform hover:scale-105">
+                                Play Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Free Games Section -->
+        <section class="fade-in-on-scroll max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-10">
+                
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Free Game Card 1 -->
+                <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-cyan-500/50 transition-all duration-300 hover:neon-glow">
+                    <img src="https://placehold.co/800x450/1e293b/a1a1aa?text=Free+Game+1" alt="Free Game 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2">Block Breaker</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            A classic arcade game with a modern twist. Break all the blocks!
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-500">Free</span>
+                            <button class="bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-bold py-2 px-4 rounded-md transition-transform transform hover:scale-105">
+                                Play Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Free Game Card 2 -->
+                <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-fuchsia-500/50 transition-all duration-300 hover:neon-glow">
+                    <img src="https://placehold.co/800x450/1e293b/a1a1aa?text=Free+Game+2" alt="Free Game 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2">Jungle Runner</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Run and jump through a dangerous jungle in this endless runner.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-500">Free</span>
+                            <button class="bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-bold py-2 px-4 rounded-md transition-transform transform hover:scale-105">
+                                Play Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Free Game Card 3 -->
+                <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-cyan-500/50 transition-all duration-300 hover:neon-glow">
+                    <img src="https://placehold.co/800x450/1e293b/a1a1aa?text=Free+Game+3" alt="Free Game 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2">Space Survivor</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Survive as long as you can in the cold, unforgiving vacuum of space.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-500">Free</span>
+                            <button class="bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-bold py-2 px-4 rounded-md transition-transform transform hover:scale-105">
+                                Play Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- Upcoming Tournaments Section -->
+        <section id="upcoming-tournaments" class="mb-24 fade-in-on-scroll max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-10">
+                Upcoming Tournaments
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tournament Card 1 -->
+                <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/50">
+                    <img src="image/m7.png" alt="Upcoming Tournament 1" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2 text-white">The Mobile Legends: Bang Bang (MLBB) M7 World Championship</h3>
+                        <p class="text-gray-400 text-sm mb-2">Date: Early 2026</p>
+                        <p class="text-gray-400 text-sm mb-4">Prize Pool: <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">$3,000,000</span></p>
+                        <button class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-2 px-4 rounded-md w-full transition-transform transform hover:scale-105">
+                            <a href="https://liquipedia.net/mobilelegends/M_World_Championship">Join Now</a>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tournament Card 2 -->
+                <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-fuchsia-500/50">
+                    <img src="image/sea.png" alt="Upcoming Tournament 2" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2 text-white">SEA Games 2025</h3>
+                        <p class="text-gray-400 text-sm mb-2">Date: Tue, 9 Dec 2025</p>
+                        <p class="text-gray-400 text-sm mb-4">Prize Pool: <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">has not been officially announced</span></p>
+                        <button class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-2 px-4 rounded-md w-full transition-transform transform hover:scale-105">
+                            <a href="https://en.wikipedia.org/wiki/2025_SEA_Games">Join Now</a>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tournament Card 3 -->
+                <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/50">
+                    <img src="image/esl.png" alt="Upcoming Tournament 3" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2 text-white">ESL Impact League Season 8: European Division</h3>
+                        <p class="text-gray-400 text-sm mb-2">Date: August 19, 2025</p>
+                        <p class="text-gray-400 text-sm mb-4">Prize Pool: <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">$50,000</span></p>
+                        <button class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-2 px-4 rounded-md w-full transition-transform transform hover:scale-105">
+                            <a href="https://liquipedia.net/counterstrike/ESL/Impact_League/Season_8/Europe">Join Now</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Finished Tournaments Section -->
+        <section id="finished-tournaments" class="mb-24 fade-in-on-scroll max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-10">
+                Finished Tournaments
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Finished Card 1 -->
+                <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-fuchsia-500/50">
+                    <img src="image/pubgcham.jpg" alt="Finished Tournament 1" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2 text-white">PUBG Mobile World Cup 2025</h3>
+                        <p class="text-gray-400 text-sm mb-2">Date: August, 2025</p>
+                        <p class="text-gray-400 text-sm mb-4">Winner: <span class="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-white">Yangon Galacticos</span></p>
+                        <button class="bg-gray-600 text-white font-bold py-2 px-4 rounded-md w-full transition-transform transform hover:scale-105">
+                            <a href="https://en.wikipedia.org/wiki/PUBG_Mobile_World_Cup_2025#:~:text=The%20PUBG%20Mobile%20World%20Cup,the%202025%20Esports%20World%20Cup.&text=Myanmar's%20Yangon%20Galacticos%20won%20the%20tournament.">View Results</a>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Finished Card 2 -->
+                <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/50">
+                    <img src="image/mlbbcham.jpg" alt="Finished Tournament 2" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2 text-white">MLBB Mid Season Cup(MSC)</h3>
+                        <p class="text-gray-400 text-sm mb-2">Date: August, 2025</p>
+                        <p class="text-gray-400 text-sm mb-4">Winner: <span class="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-white">Team Liquid</span></p>
+                        <button class="bg-gray-600 text-white font-bold py-2 px-4 rounded-md w-full transition-transform transform hover:scale-105">
+                            <a href="https://liquipedia.net/mobilelegends/MSC/2025">View Results</a>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Finished Card 3 -->
+                <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-fuchsia-500/50">
+                    <img src="image/m6cham.jpg" alt="Finished Tournament 3" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2 text-white">M6 World Championship</h3>
+                        <p class="text-gray-400 text-sm mb-2">Date: 2024</p>
+                        <p class="text-gray-400 text-sm mb-4">Winner: <span class="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-white">Fnatic ONIC Philippines (FNOP)</span></p>
+                        <button class="bg-gray-600 text-white font-bold py-2 px-4 rounded-md w-full transition-transform transform hover:scale-105">
+                           <a href="https://liquipedia.net/mobilelegends/M6_World_Championship">View Results</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+                    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-500 py-8 md:py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- About Section -->
+            <div>
+                <h3 class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-4">PLAYVERSE</h3>
+                <p class="text-gray-400 text-sm">
+                    Playverse is your ultimate destination for everything gaming. Discover, connect, and explore new worlds.
+                </p>
+            </div>
+            
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
+                    <li><a href="games.html" class="text-gray-400 hover:text-white transition-colors duration-300">Games</a></li>
+                    <li><a href="shop.html" class="text-gray-400 hover:text-white transition-colors duration-300">Shop</a></li>
+                    <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Media -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M18.244 2H21.5l-7.55 8.64L22 22h-6.63l-5.2-6.83L4.17 22H0.91l7.91-9.04L2 2h6.63l4.78 6.39L18.244 2z"/>
+  </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M22 12.06c0-5.52-4.48-10-10-10s-10 4.48-10 10c0 5.09 3.73 9.35 8.5 9.92v-7h-2.5v-3h2.5v-2.2c0-2.48 1.49-3.85 3.75-3.85 1.13 0 2.09.08 2.37.11v2.77h-1.63c-1.29 0-1.54.62-1.54 1.52v2h3.08l-.5 3h-2.58v7c4.77-.57 8.5-4.83 8.5-9.92z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5Zm4.25 3.25a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm0 1.5a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm5.75-.88a1.13 1.13 0 1 1-2.25 0 1.13 1.13 0 0 1 2.25 0Z"/>
+  </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Contact</h3>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="mailto:info@playverse.com" class="hover:text-white transition-colors duration-300">info@playverse.com</a></li>
+                    <li><a href="tel:+9591060582" class="hover:text-white transition-colors duration-300">+959 691 060 582</a></li>
+                    <li>Ya Za Thin Ga ha Road, NSPU, PopaThiri Township, Nay Pyi Taw</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 text-center">
+            <p>&copy; 2025 Playverse. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ----- FADE IN ON SCROLL ANIMATION LOGIC -----
+            const animateElements = document.querySelectorAll('.fade-in-on-scroll');
+            const isElementInViewport = (el) => {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            };
+            const checkVisibility = () => {
+                animateElements.forEach(el => {
+                    if (isElementInViewport(el)) {
+                        el.classList.add('is-visible');
+                    }
+                });
+            };
+            window.addEventListener('scroll', checkVisibility);
+            checkVisibility();
+
+            // ----- DYNAMIC GAME CAROUSEL LOGIC -----
+            const games = [
+                {
+                    title: "Black Myth: Wukong",
+                    developer: "Game Science",
+                    rating: 4.8,
+                    ratingsCount: "2.9K ratings",
+                    price: "$59.99",
+                    originalPrice: "$89.99",
+                    discount: "Save 20%",
+                    // This is a placeholder video URL. Replace it with your own public link.
+                    video: "image/blackmyth.mp4",
+                    features: [
+                        "PS5 play enabled",
+                        "Story Line Game",
+                        "Stunning Visuals & Realistic World"
+                    ]
+                },
+                {
+                    title: "ASTRO BOT",
+                    developer: "Sony Interactive Entertainment",
+                    rating: 4.9,
+                    ratingsCount: "5.1K ratings",
+                    price: "$59.99",
+                    originalPrice: "$79.99",
+                    discount: "Save 25%",
+                    video: "image/artrobot.mp4",
+                    features: [
+                        "Online play optional",
+                        "Stunning graphics",
+                        "Remote Play supported"
+                    ]
+                },
+                {
+                    title: "God of War Ragnarök",
+                    developer: "Sony Interactive Entertainment",
+                    rating: 4.8,
+                    ratingsCount: "158.0K ratings",
+                    price: "$69.99",
+                    originalPrice: "$99.99",
+                    discount: "Save 50%",
+                    video: "image/godofwar.mp4",
+                    features: [
+                        "Offline play enabled",
+                        "1 player",
+                        "Remote Play supported"
+                    ]
+                },
+                {
+                    title: "Grand Theft Auto V",
+                    developer: "Rockstar Games",
+                    rating: 4.5,
+                    ratingsCount: "848.2K ratings",
+                    price: "$19.99",
+                    originalPrice: "$29.99",
+                    discount: "Save 33%",
+                    video: "image/gta.mp4",
+                    features: [
+                        "PS Plus required for online play",
+                        "Open World Game",
+                        "Remote Play supported"
+                    ]
+                }
+            ];
+
+            let currentGameIndex = 0;
+            let autoSwitchInterval;
+
+            const gameContainer = document.getElementById('game-container');
+            const gameTitle = document.getElementById('game-title');
+            const gameDeveloper = document.getElementById('game-developer');
+            const gameRating = document.getElementById('game-rating');
+            const ratingStars = document.getElementById('rating-stars');
+            const gameRatingsCount = document.getElementById('game-ratings-count');
+            const gamePrice = document.getElementById('game-price');
+            const gameOriginalPrice = document.getElementById('game-original-price');
+            const gameDiscount = document.getElementById('game-discount');
+            const gameImage = document.getElementById('game-image');
+            const gameVideo = document.getElementById('game-video');
+            const feature1Text = document.getElementById('feature-1-text');
+            const feature2Text = document.getElementById('feature-2-text');
+            const feature3Text = document.getElementById('feature-3-text');
+            const prevBtn = document.getElementById('prev-game-btn');
+            const nextBtn = document.getElementById('next-game-btn');
+
+            const updateGameDisplay = () => {
+                const game = games[currentGameIndex];
+                
+                // Animate the card by removing and re-adding the class
+                gameContainer.classList.remove('game-card-fade');
+                void gameContainer.offsetWidth; // Trigger reflow
+                gameContainer.classList.add('game-card-fade');
+
+                gameTitle.textContent = game.title;
+                gameDeveloper.textContent = game.developer;
+                gameRating.textContent = game.rating;
+                gameRatingsCount.textContent = game.ratingsCount;
+                gamePrice.textContent = game.price;
+                gameOriginalPrice.textContent = game.originalPrice;
+                gameDiscount.textContent = game.discount;
+                feature1Text.textContent = game.features[0];
+                feature2Text.textContent = game.features[1];
+                feature3Text.textContent = game.features[2];
+
+                // Dynamically show video or image based on data
+                if (game.video) {
+                    gameVideo.style.display = 'block';
+                    gameImage.style.display = 'none';
+                    gameVideo.querySelector('source').src = game.video;
+                    gameVideo.load(); // Load the new video source
+                    gameVideo.play();
+                } else if (game.image) {
+                    gameVideo.style.display = 'none';
+                    gameImage.style.display = 'block';
+                    gameImage.src = game.image;
+                } else {
+                    // Fallback if neither is available
+                    gameVideo.style.display = 'none';
+                    gameImage.style.display = 'block';
+                    gameImage.src = "https://placehold.co/800x450/4f5b6e/fff?text=No+Visual";
+                }
+
+                // Dynamically create star rating based on the number
+                ratingStars.innerHTML = '';
+                const fullStars = Math.floor(game.rating);
+                const hasHalfStar = game.rating % 1 !== 0;
+
+                for (let i = 0; i < fullStars; i++) {
+                    ratingStars.innerHTML += `<svg class="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.184c.969 0 1.371 1.24.588 1.81l-3.397 2.469a1 1 0 00-.364 1.118l1.287 3.967c.3.921-.755 1.688-1.54 1.118l-3.397-2.469a1 1 0 00-1.176 0l-3.397 2.469c-.785.57-1.84-.197-1.54-1.118l1.287-3.967a1 1 0 00-.364-1.118L2.055 9.394c-.783-.57-.381-1.81.588-1.81h4.184a1 1 0 00.95-.69l1.286-3.967z" /></svg>`;
+                }
+                if (hasHalfStar) {
+                    ratingStars.innerHTML += `<svg class="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.184c.969 0 1.371 1.24.588 1.81l-3.397 2.469a1 1 0 00-.364 1.118l1.287 3.967c.3.921-.755 1.688-1.54 1.118l-3.397-2.469a1 1 0 00-1.176 0L5.3 18.25c-.785.57-1.84-.197-1.54-1.118l1.287-3.967a1 1 0 00-.364-1.118L2.055 9.394c-.783-.57-.381-1.81.588-1.81h4.184a1 1 0 00.95-.69l1.286-3.967zM10 16.5V2.927c-.9-.45-1.95.1-2.4 1.05l-1.286 3.967a1 1 0 00-.95.69H2.055c-.969 0-1.371 1.24-.588 1.81l3.397 2.469a1 1 0 00.364 1.118l-1.287 3.967c-.3.921.755 1.688 1.54 1.118L10 16.5z" clip-rule="evenodd" /></svg>`;
+                }
+            };
+            
+            // Function to change game and reset timer
+            const changeGame = (direction) => {
+                if (direction === 'next') {
+                    currentGameIndex = (currentGameIndex + 1) % games.length;
+                } else {
+                    currentGameIndex = (currentGameIndex - 1 + games.length) % games.length;
+                }
+                updateGameDisplay();
+                resetAutoSwitch();
+            };
+
+            // Event listeners for manual navigation
+            prevBtn.addEventListener('click', () => changeGame('prev'));
+            nextBtn.addEventListener('click', () => changeGame('next'));
+
+            // Auto-switch logic
+            const startAutoSwitch = () => {
+                autoSwitchInterval = setInterval(() => {
+                    changeGame('next');
+                }, 60000); // 60000 ms = 1 minute
+            };
+
+            const resetAutoSwitch = () => {
+                clearInterval(autoSwitchInterval);
+                startAutoSwitch();
+            };
+            
+            // Initial call to display the first game and start the auto-switch
+            updateGameDisplay();
+            startAutoSwitch();
+        });
+
+        const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Memory Game</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background: linear-gradient(to right, rgb(255, 0, 238), rgb(30, 11, 240));
+            font-family: sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        #main {
+            background-color: black;
+            border: solid black 1px;
+            width: 55%;
+            height: 500px;
+            margin: auto;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        #top {
+            border: solid black 1px;
+            width: 100%;
+            height: 20%;
+            margin-bottom: -40px;
+        }
+
+        #grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns */
+            grid-template-rows: repeat(3, 1fr);    /* 3 rows */
+            gap: 10px;
+            height: 75%; /* Remaining space in #main */
+        }
+
+        .box {
+            background-color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            overflow: hidden;
+        }
+
+        .box:hover {
+            background-color: #dddddd40;
+        }
+
+        #img1,
+        #img2,
+        #img3,
+        #img4,
+        #img5,
+        #img6 {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        #reset {
+            cursor: pointer;
+            margin: auto;
+            margin-bottom: 25px;
+            background-color: white;
+            width: 20%;
+            height: 7%;
+        }
+
+        #reset:hover {
+            background-color: #dddddd40;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="head">This is a memory game.</h2>
+    <div id="main">
+        <div id="top">Memory Game</div>
+        <button id="reset" onclick="reset()">Reset</button>
+        <div id="grid">
+            <div class="box" id="box1" onclick="changee1()"></div>
+            <div class="box" id="box2" onclick="changee2()"></div>
+            <div class="box" id="box3" onclick="changee3()"></div>
+            <div class="box" id="box4" onclick="changee4()"></div>
+            <div class="box" id="box5" onclick="changee5()"></div>
+            <div class="box" id="box6" onclick="changee6()"></div>
+            <div class="box" id="box7" onclick="changee7()"></div>
+            <div class="box" id="box8" onclick="changee8()"></div>
+            <div class="box" id="box9" onclick="changee9()"></div>
+            <div class="box" id="box10" onclick="changee10()"></div>
+            <div class="box" id="box11" onclick="changee11()"></div>
+            <div class="box" id="box12" onclick="changee12()"></div>
+        </div>
+        <p id="test">here</p>
+        <p id="test2">here2</p>
+    </div>
+
+    <script>
+        let apple = '<img id="img2" src="apple.jpg">';
+        let pineapple = '<img id="img2" src="pineapple.jpg">';
+        let grape = '<img id="img3" src="grape.jpg">';
+        let banana = '<img id="img4" src="banana.jpg">';
+        let watermelon = '<img id="img5" src="watermelon.jpg">';
+        let mango = '<img id="img6" src="mango.avif">';
+
+        let apple1 = '<img id="img2" src="apple.jpg">';
+        let pineapple1 = '<img id="img2" src="pineapple.jpg">';
+        let grape1 = '<img id="img3" src="grape.jpg">';
+        let banana1 = '<img id="img4" src="banana.jpg">';
+        let watermelon1 = '<img id="img5" src="watermelon.jpg">';
+        let mango1 = '<img id="img6" src="mango.avif">';
+
+        let display = [apple,pineapple,grape,banana,watermelon,mango,apple,pineapple,grape,banana,watermelon,mango];
+       
+        display.sort(() => Math.random() - 0.5);
+
+         
+        function reset(){
+            location.reload();
+            display.sort(() => Math.random() - 0.5);
+            document.getElementById('box1').innerHTML = "";
+            document.getElementById('box2').innerHTML = "";
+            document.getElementById('box3').innerHTML = "";
+            document.getElementById('box4').innerHTML = "";
+            document.getElementById('box5').innerHTML = "";
+            document.getElementById('box6').innerHTML = "";
+            document.getElementById('box7').innerHTML = "";
+            document.getElementById('box8').innerHTML = "";
+            document.getElementById('box9').innerHTML = "";
+            document.getElementById('box10').innerHTML = "";
+            document.getElementById('box11').innerHTML = "";
+            document.getElementById('box12').innerHTML = "";
+
+        }
+
+        let x,x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11;
+        let clicks = 0;
+        let y;
+        let z,z1,z3,z4,z5,z6,z7,z8,z9,z10,z11;
+        z=z1=z2=z3=z4=z5=z6=z7=z8=z9=z10=z11=-1;
+        let timeout;
+        let show = ["box1","box2","box3","box4","box5","box6","box7","box8","box9","box10","box11","box12"]
+
+        function clicker(){
+        if (clicks == 1){
+            y = x;
+            document.getElementById('test2').innerHTML= y;
+        }else if (clicks == 2){
+            document.getElementById('test').innerHTML = x;
+            clicks = 0;
+
+            if ( y == x){
+                if (z != -1){
+                    z = -1;
+                    document.getElementById("box1").onclick = null;
+                }
+                if (z1 != -1){
+                    z1 = -1;
+                    document.getElementById("box2").onclick = null;
+                }
+                if (z2 != -1){
+                    z2 = -1;
+                    document.getElementById("box3").onclick = null;
+                }
+                if (z3 != -1){
+                    z3 = -1;
+                    document.getElementById("box4").onclick = null;
+                }
+                if (z4 != -1){
+                    z4 = -1;
+                    document.getElementById("box5").onclick = null;
+                }
+                if (z5 != -1){
+                    z5 = -1;
+                    document.getElementById("box6").onclick = null;
+                }
+                if (z6 != -1){
+                    z6 = -1;
+                    document.getElementById("box7").onclick = null;
+                }
+                if (z7 != -1){
+                    z7 = -1;
+                    document.getElementById("box8").onclick = null;
+                }
+                if (z8 != -1){
+                    z8 = -1;
+                    document.getElementById("box9").onclick = null;
+                }
+                if (z9 != -1){
+                    z9 = -1;
+                    document.getElementById("box10").onclick = null;
+                }
+                if (z10 != -1){
+                    z10 = -1;
+                    document.getElementById("box11").onclick = null;
+                }
+                if (z11 != -1){
+                    z11 = -1;
+                    document.getElementById("box12").onclick = null;
+                }
+            }
+            else if(y != x){
+
+            function timeF(){
+                if (z != -1){
+                document.getElementById(show[z]).innerHTML = "";
+                z = -1;
+                }
+                if (z1 != -1){
+                document.getElementById(show[z1]).innerHTML = "";
+                z1 = -1;
+                }
+                if (z2 != -1){
+                document.getElementById(show[z2]).innerHTML = "";
+                z2 = -1;
+                }
+                if (z3 != -1){
+                document.getElementById(show[z3]).innerHTML = "";
+                z3 = -1;
+                }
+                if (z4 != -1){
+                document.getElementById(show[z4]).innerHTML = "";
+                z4 = -1;
+                }
+                if (z5 != -1){
+                document.getElementById(show[z5]).innerHTML = "";
+                z5 = -1;
+                }
+                if (z6 != -1){
+                document.getElementById(show[z6]).innerHTML = "";
+                z6 = -1;
+                }
+                if (z7 != -1){
+                document.getElementById(show[z7]).innerHTML = "";
+                z7 = -1;
+                }
+                if (z8 != -1){
+                document.getElementById(show[z8]).innerHTML = "";
+                z8 = -1;
+
+                }
+                if (z9 != -1){
+                document.getElementById(show[z9]).innerHTML = "";
+                z9 = -1;
+
+                }
+                if (z10 != -1){
+                document.getElementById(show[z10]).innerHTML = "";
+                z10 = -1;
+                }
+                if (z11 != -1){
+                document.getElementById(show[z11]).innerHTML = "";
+                z11 = -1;
+                }
+            }
+            timeout = setTimeout(timeF,500);
+            }
+        }
+        } 
+
+        function changee1(){
+            z = 0;
+            document.getElementById('box1').innerHTML = display[0];
+            if (display[0] == apple){
+                x = 1;
+            }else if (display[0] == pineapple){
+                x = 2;
+            }else if (display[0] == grape){
+                x = 3;
+            }else if (display[0] == banana){
+                x = 4;
+            }else if (display[0] == watermelon){
+                x = 5;
+            }else if (display[0] == mango){
+                x = 6;
+            }
+            clicks++;
+            clicker()
+        }
+        
+        function changee2(){
+            z1 = 1;
+            document.getElementById('box2').innerHTML = display[1];
+            if (display[1] == apple){
+    x = 1;
+}else if (display[1] == pineapple){
+    x = 2;
+}else if (display[1] == grape){
+    x = 3;
+}else if (display[1] == banana){
+    x = 4;
+}else if (display[1] == watermelon){
+    x = 5;
+}else if (display[1] == mango){
+    x = 6;
+}
+clicks++;
+clicker()
+        }
+        
+        function changee3(){
+            z2 = 2;
+            document.getElementById('box3').innerHTML = display[2];
+            if (display[2] == apple){
+    x = 1;
+}else if (display[2] == pineapple){
+    x = 2;
+}else if (display[2] == grape){
+    x = 3;
+}else if (display[2] == banana){
+    x = 4;
+}else if (display[2] == watermelon){
+    x = 5;
+}else if (display[2] == mango){
+    x = 6;
+}
+clicks++;
+clicker()
+
+        }
+        
+        function changee4(){
+            z3 = 3;
+            document.getElementById('box4').innerHTML = display[3];
+            if (display[3] == apple){
+    x = 1;
+}else if (display[3] == pineapple){
+    x = 2;
+}else if (display[3] == grape){
+    x = 3;
+}else if (display[3] == banana){
+    x = 4;
+}else if (display[3] == watermelon){
+    x = 5;
+}else if (display[3] == mango){
+    x = 6;
+}
+clicks++;
+clicker()
+        }
+        
+        function changee5(){
+            z4 = 4;
+            document.getElementById('box5').innerHTML = display[4];
+            if (display[4] == apple){
+    x = 1;
+}else if (display[4] == pineapple){
+    x = 2;
+}else if (display[4] == grape){
+    x = 3;
+}else if (display[4] == banana){
+    x = 4;
+}else if (display[4] == watermelon){
+    x = 5;
+}else if (display[4] == mango){
+    x = 6;
+}
+clicks++;
+clicker()
+
+        }
+        
+        function changee6(){
+            z5 = 5;
+            document.getElementById('box6').innerHTML = display[5];
+            if (display[5] == apple){
+    x = 1;
+}else if (display[5] == pineapple){
+    x = 2;
+}else if (display[5] == grape){
+    x = 3;
+}else if (display[5] == banana){
+    x = 4;
+}else if (display[5] == watermelon){
+    x = 5;
+}else if (display[5] == mango){
+    x = 6;
+}
+clicks++;
+clicker()
+        }
+        
+        function changee7(){
+            z6 = 6;
+            document.getElementById('box7').innerHTML = display[6];
+            if (display[6] == apple){
+    x = 1;
+}else if (display[6] == pineapple){
+    x = 2;
+}else if (display[6] == grape){
+    x = 3;
+}else if (display[6] == banana){
+    x = 4;
+}else if (display[6] == watermelon){
+    x = 5;
+}else if (display[6] == mango){
+    x = 6;
+}
+clicks++;
+clicker()
+        }
+        
+        function changee8(){
+            z7 = 7;
+            document.getElementById('box8').innerHTML = display[7];
+            if (display[7] == apple){
+    x = 1;
+}else if (display[7] == pineapple){
+    x = 2;
+}else if (display[7] == grape){
+    x = 3;
+}else if (display[7] == banana){
+    x = 4;
+}else if (display[7] == watermelon){
+    x = 5;
+}else if (display[7] == mango){
+    x = 6;
+}
+clicks++;
+clicker()
+        }
+        
+        function changee9(){
+            z8 = 8;
+            document.getElementById('box9').innerHTML = display[8];
+            if (display[8] == apple){
+    x = 1;
+}else if (display[8] == pineapple){
+    x = 2;
+}else if (display[8] == grape){
+    x = 3;
+}else if (display[8] == banana){
+    x = 4;
+}else if (display[8] == watermelon){
+    x = 5;
+}else if (display[8] == mango){
+    x = 6;
+}
+clicks++;
+clicker()
+        }
+        
+        function changee10(){
+            z9 = 9;
+            document.getElementById('box10').innerHTML = display[9];
+            if (display[9] == apple){
+    x = 1;
+}else if (display[9] == pineapple){
+    x = 2;
+}else if (display[9] == grape){
+    x = 3;
+}else if (display[9] == banana){
+    x = 4;
+}else if (display[9] == watermelon){
+    x = 5;
+}else if (display[9] == mango){
+    x = 6;
+}
+clicks++;
+clicker()
+        }
+        
+        function changee11(){
+            z10 = 10;
+            document.getElementById('box11').innerHTML = display[10];
+            if (display[10] == apple){
+    x = 1;
+}else if (display[10] == pineapple){
+    x = 2;
+}else if (display[10] == grape){
+    x = 3;
+}else if (display[10] == banana){
+    x = 4;
+}else if (display[10] == watermelon){
+    x = 5;
+}else if (display[10] == mango){
+    x = 6;
+}
+clicks++;
+clicker()
+        }
+        
+        function changee12(){
+            z11 = 11;
+            document.getElementById('box12').innerHTML = display[11];
+            if (display[11] == apple){
+    x = 1;
+}else if (display[11] == pineapple){
+    x = 2;
+}else if (display[11] == grape){
+    x = 3;
+}else if (display[11] == banana){
+    x = 4;s
+}else if (display[11] == watermelon){
+    x = 5;
+}else if (display[11] == mango){
+    x = 6;
+}
+clicks++;
+clicker()
+        }
+
+    
+</script>
+</body>
+</html>

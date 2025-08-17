@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playverse | Shop</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/shop.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> 
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#15212c]">
+
+<!-- Offcanvas slidebar -->
+ <div class="offcanvas offcanvas-end text-bg-dark" id="demoo">
+  <div class="offcanvas-header">
+    <h1 class="offcanvas-title"><strong>Explore</strong></h1>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div id="slidebarbody" class="offcanvas-body">
+
+    <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#space" style="display: block;">
+       tournaments
+    </button>
+
+    <a href="shop.html#ingame-items" >In Game Items</a>
+    <a href="shop.html">Shop</a>
+    <a href="games.html#upcoming-tournaments" >E-sport</a>
+    <a href="signin.html" >Sign In</a>
+    </div>
+  </div>
+</div>
+<!-- Navigation -->
+    <nav>
+        <div class="logo">PLAYVERSE</div>
+        <div class="nav-links">
+            <a href="index.html" >Home</a>
+            <a href="games.html" >Games</a>
+            <a href="shop.html" class="active">Shop</a>
+            <a href="contact.html">Contact</a>
+            <a href="signin.html">Sign In</a>
+            <a href="#" class="btn-nav"><button class="btn align-items-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#demoo">
+            Explore
+        </button></a>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div> <!-- Hamburger -->
+    </nav>
+
+
+    <!-- Main Shop Section -->
+    <section class="container mx-auto px-4 py-12 mt" >
+        <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-12 mt-20 text-center">PlayVerse Store</h1>
+        
+        <!-- Games Grid -->
+        <h2 class="text-3xl font-bold text-white mb-6">Hardware Devices</h2>
+        <div id="games-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-16">
+            <!-- Game cards will be dynamically added here by JavaScript -->
+        </div>
+
+        <!-- In-Game Items Grid -->
+        <h2 id="ingame-items" class="text-3xl font-bold text-white mb-6">In-Game Items and Skins</h2>
+        <div id="in-game-items-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-16">
+            <!-- In-game item cards will be dynamically added here by JavaScript -->
+        </div>
+
+        <!-- Hardware Devices Grid -->
+        <h2 class="text-3xl font-bold text-white mb-6">Featured items</h2>
+        <div id="hardware-devices-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <!-- Hardware device cards will be dynamically added here by JavaScript -->
+        </div>
+    </section>
+
+     <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-500 py-8 md:py-12 mt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- About Section -->
+            <div>
+                <h3 class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-4">PLAYVERSE</h3>
+                <p class="text-gray-400 text-sm">
+                    Playverse is your ultimate destination for everything gaming. Discover, connect, and explore new worlds.
+                </p>
+            </div>
+            
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
+                    <li><a href="games.html" class="text-gray-400 hover:text-white transition-colors duration-300">Games</a></li>
+                    <li><a href="shop.html" class="text-gray-400 hover:text-white transition-colors duration-300">Shop</a></li>
+                    <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Media -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M18.244 2H21.5l-7.55 8.64L22 22h-6.63l-5.2-6.83L4.17 22H0.91l7.91-9.04L2 2h6.63l4.78 6.39L18.244 2z"/>
+  </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M22 12.06c0-5.52-4.48-10-10-10s-10 4.48-10 10c0 5.09 3.73 9.35 8.5 9.92v-7h-2.5v-3h2.5v-2.2c0-2.48 1.49-3.85 3.75-3.85 1.13 0 2.09.08 2.37.11v2.77h-1.63c-1.29 0-1.54.62-1.54 1.52v2h3.08l-.5 3h-2.58v7c4.77-.57 8.5-4.83 8.5-9.92z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5Zm4.25 3.25a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm0 1.5a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm5.75-.88a1.13 1.13 0 1 1-2.25 0 1.13 1.13 0 0 1 2.25 0Z"/>
+  </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Contact</h3>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="mailto:info@playverse.com" class="hover:text-white transition-colors duration-300">info@playverse.com</a></li>
+                    <li><a href="tel:+9591060582" class="hover:text-white transition-colors duration-300">+959 691 060 582</a></li>
+                    <li>Ya Za Thin Ga ha Road, NSPU, PopaThiri Township, Nay Pyi Taw</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 text-center">
+            <p>&copy; 2025 Playverse. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ----- DYNAMIC GAMES GRID LOGIC -----
+            const games = [
+                {
+                    title: "DualSense Edge® wireless controller",
+                    price: "$199.99",
+                    image: "image/wcontrol.webp",
+                },
+                {
+                    title: "PlayStation Portal™ Remote Player",
+                    price: "$199.99",
+                    image: "image/remotecontrol.webp",
+                },
+                {
+                    title: "Sony INZONE H9 Wireless Noise Canceling Headset",
+                    price: "$29.99",
+                    image: "image/headphone.webp",
+                },
+                {
+                    title: "HORI Apex Racing Wheel and Pedals",
+                    price: "$119.99",
+                    image: "image/wheel.webp",
+                },
+                {
+                    title: "PlayStation®5 Console (model group - slim)*",
+                    price: "$499.99",
+                    image: "image/ps5.webp",
+                },
+                {
+                    title: "Nintendo Switch™ 2 + Pokémon™ Legends",
+                    price: "$499.99",
+                    image: "image/nintendo.avif",
+                },
+                {
+                    title: "Nintendo Switch™ - Neon Red Joy-Con™",
+                    price: "$339.99",
+                    image: "image/niswitch.avif",
+                },
+                {
+                    title: "PlayStation®VR2",
+                    price: "$399.99",
+                    image: "image/vrcontrol.webp",
+                }
+            ];
+
+            const inGameItems = [
+                {
+                    title: "Mobile Legend Bang Bnag: 221 Diamonds",
+                    price: "$3.28",
+                    image: "image/diamond.png",
+                },
+                {
+                    title: "PlayerUnknown's Battlegrounds: 600 UC",
+                    price: "$9.99",
+                    image: "image/uc.png",
+                },
+                {
+                    title: "Counter-Strike 2: AK-47",
+                    price: "$199.99",
+                    image: "image/ak.png",
+                },
+                {
+                    title: "Counter-Strike 2: Fennec Fox",
+                    price: "$345.00",
+                    image: "image/gun.webp",
+                }
+            ];
+
+            const hardwareDevices = [
+                {
+                    title: "amiibo™ - Octoling (Blue)",
+                    price: "$19.99",
+                    image: "image/figure.avif",
+                },
+                {
+                    title: "amiibo™ - Donkey Kong and Pauline",
+                    price: "$79.99",
+                    image: "image/figure1.avif",
+                },
+                {
+                    title: "amiibo™ - Pokémon™ Trainerd",
+                    price: "$19.99",
+                    image: "image/figure2.avif",
+                },
+                {
+                    title: "amiibo™ - Jigglypuff",
+                    price: "$19.99",
+                    image: "image/figure3.avif",
+                }
+            ];
+
+            // Function to create a single game card
+            const createProductCard = (product) => {
+                const card = document.createElement('div');
+                card.classList.add('game-card', 'rounded-xl', 'overflow-hidden', 'shadow-lg', 'bg-gray-800', 'hover:shadow-2xl', 'transition-shadow', 'duration-300', 'relative');
+                
+                card.innerHTML = `
+                    <div class="w-full h-48 sm:h-56 overflow-hidden">
+                        <img src="${product.image}" alt="${product.title} Image" class="w-full h-full object-cover transition-transform duration-500 transform hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-white">${product.title}</h3>
+                        <p class="text-2xl font-bold text-white-50 mb-4">${product.price}</p>
+                        <button class="game-card-btn w-full text-white font-bold py-3 rounded-lg">
+                            <a href="payment.html">Add to Cart</a>
+                        </button>
+                    </div>
+                `;
+                return card;
+            };
+
+            // Function to render all product cards for a given category
+            const renderProducts = (products, containerId) => {
+                const container = document.getElementById(containerId);
+                container.innerHTML = ''; // Clear the grid first
+                products.forEach(product => {
+                    container.appendChild(createProductCard(product));
+                });
+            };
+
+            // Render all sections
+            renderProducts(games, 'games-grid');
+            renderProducts(inGameItems, 'in-game-items-grid');
+            renderProducts(hardwareDevices, 'hardware-devices-grid');
+        });
+
+        const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+    </script>
+</body>
+</html>

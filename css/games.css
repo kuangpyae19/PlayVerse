@@ -1,0 +1,249 @@
+:root {
+    --primary: #6c5ce7;
+    --dark: #1a1a2e;
+    --light: #f8f9fa;
+    --accent: #f72585;
+    --card-bg: #16213e;
+    --bg-color: #0B0C10;
+    --section-divider: #1F2833;
+    --button: #45A29E;
+    --highlight: #66FCF1;
+    --text-color: #FFFFFF;
+    --logo-color: #e0218a;
+    --title-color: black;
+    --blue-color: #197d91;
+    --nav-color:#78d7ea;
+}
+
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: white;
+            overflow-x: hidden;
+        } */
+            
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* background-color: var(--dark); */
+    
+    color: var(--light);
+    transition: background 0.3s;
+} 
+/* === Navigation Bar === */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    background: linear-gradient(to right, #f72585, #7209b7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(247, 37, 133, 0.5);
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--light);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+    margin-right: 30px;
+}
+
+.nav-links a:hover:not(.active) {
+        color: var(--accent);
+}
+
+.nav-links a.active {
+  color: var(--accent);
+}
+
+.btn-nav {
+    /* padding: 8px 20px; */
+    background: var(--accent);
+    border-radius: 50px;
+    margin-left: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: left;
+}
+
+.btn-nav button{
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    color: white;
+    margin: none;
+}
+
+.btn-nav:hover{
+    background-color: #74304f;
+}
+
+.btn-nav button:hover{
+    color: black;
+}
+
+/* nav slidebar */
+
+div #slidebarbody a{
+    display: block;
+    border-bottom: 2px solid black;
+    padding: 20px;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+#slidebarbody a:hover{
+    background-color: #2c3034;
+}
+
+div #slidebarbody li{
+    list-style-type: circle;
+}
+
+div #spacelist li a{
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+#slidebarbody button{
+    width: 100%;
+}
+
+/* Custom CSS for the fade-in animation on scroll */
+        .fade-in-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Class for the specific button color from the image */
+        .add-to-cart-btn {
+            background-color: #ca3824;
+            transition: background-color 0.3s ease;
+        }
+        .add-to-cart-btn:hover {
+            background-color: #b12f1f;
+        }
+        /* Style for the 'Like' button from the image */
+        .icon-btn {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .icon-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        /* Custom styles for the carousel navigation arrows */
+        .carousel-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .carousel-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        /* Animation for the game card fade */
+        .game-card-fade {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Navbar base */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #000;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #f72585;
+}
+
+/* Hamburger hidden on desktop */
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+}
+
+        /* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 30px;
+        background: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+@keyframes game-card-fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }

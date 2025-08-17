@@ -1,0 +1,93 @@
+ body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #15212c;
+            color: white;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        /* Style for the payment form container */
+        .payment-form-container {
+            background-color: #1e2a38;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        /* Custom input field styles for the dark theme */
+        .payment-input {
+            background-color: #2a3848;
+            border: 1px solid #4a5d73;
+            color: white;
+            transition: border-color 0.3s ease;
+        }
+        .payment-input:focus {
+            outline: none;
+            border-color: #ca3824;
+        }
+        /* Pay now button with glow animation */
+        .pay-now-btn {
+            background-color: #ca3824;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .pay-now-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.7s ease-in-out;
+            transform: translate(-50%, -50%) rotate(45deg);
+            z-index: 0;
+        }
+        .pay-now-btn:hover::before {
+            width: 0;
+            height: 0;
+        }
+        /* Loading spinner animation */
+        .loader {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Payment success animation */
+        .payment-success {
+            opacity: 0;
+            transform: scale(0.5) translateY(20px);
+            animation: fadeInScale 0.8s ease-out forwards;
+        }
+        @keyframes fadeInScale {
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        /* Checkmark animation */
+        .checkmark-circle {
+            animation: checkmark-stroke 1s forwards cubic-bezier(0.65, 0, 0.45, 1);
+        }
+        .checkmark-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: checkmark-stroke 0.8s forwards cubic-bezier(0.65, 0, 0.45, 1) 0.5s;
+        }
+        @keyframes checkmark-stroke {
+            to { stroke-dashoffset: 0; }
+        }
+        .payment-success-text {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeAndSlide 0.8s ease-out forwards 1s;
+        }
+        @keyframes fadeAndSlide {
+            to { opacity: 1; transform: translateY(0); }
+        }
